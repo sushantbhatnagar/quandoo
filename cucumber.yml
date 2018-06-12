@@ -1,1 +1,3 @@
 default: --no-source --color --format pretty
+html_report: --format progress --format html --out=features.report.html
+secure_area: FIG_NEWTON_FILE=secure_area.yml DATA_MAGIC_FILE=login.yml --profile default #--profile html_report
