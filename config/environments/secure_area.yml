@@ -1,1 +1,2 @@
-base_url: 'http://the-internet.herokuapp.com/login'
+login_url: 'http://the-internet.herokuapp.com/login'
+hover_url: 'http://the-internet.herokuapp.com/hovers'

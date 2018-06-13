@@ -2,7 +2,7 @@
 class LoginPage < SecureAreaRootPage
   include FigNewton
 
-  page_url FigNewton.base_url
+  page_url FigNewton.login_url
 
   expected_element_visible(:login_page_header, 30)
   h2(:login_page_header, text: 'Login Page')
