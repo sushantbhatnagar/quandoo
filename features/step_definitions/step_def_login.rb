@@ -21,3 +21,5 @@ end
 Then(/^I should see "([^"]*)" preventing me to login$/) do |message|
   expect(on(LoginPage).flash_message_element.text).to include message
 end
+
+
