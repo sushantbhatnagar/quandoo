@@ -1,6 +1,6 @@
 # Secure Area Website
 
-This website can be used by users to login to secure area, check their details by hovering over different avatars and validate details of their emails, website and actions available in respective data tables
+This website can be used by users to login to secure area, check their details by hovering over different avatars and validate details of their emails, website and actions available in respective data tables.
 
 # Framework Details
 
@@ -26,17 +26,17 @@ It focus on end user and the scenarios that are priority as per the business dom
 
 Cucumber execution starts from **support/env.rb** file loading the required gems and adding PageObject to the World object that Cucumber creates.
 
-Cucumber provides a number of hooks which allow us to run blocks at various points in the Cucumber test cycle. We can put them in any other file under the support directory, for example in a file called **support/hooks.rb**
+Cucumber provides a number of hooks which allow us to run blocks at various points in the Cucumber test cycle. We can put them in any other file under the support directory, for example in a file called **support/hooks.rb**.
 
 Feature files can be put under **features/** directory with .feature extension.
 
-Actual Code implementation takes place in **step_definitions/** directory having steps to navigate through the scenarios defined in the feature files.
+Actual code implementation takes place in **step_definitions/** directory having steps to navigate through the scenarios defined in the feature files.
 
 **lib/pages** directory contains the page object desing pattern implementation with each page in the application defined as a separate page.
 
 **lib/panels** directory contains the reusable elements that can be used across different pages supporting page-object design pattern.
 
-Different environments like regression, smoke tests can be defined in **cucumber.yml** file as profiles 
+Different environments like regression, smoke tests can be defined in **cucumber.yml** file as profiles. 
 
 # Run Scenarios - Instructions
 
@@ -44,16 +44,28 @@ To run the scenarios included in the feature files, there are two steps
 
 ```
 cd secure_area\
+```
+
+To run all features at once:
+```
+cucumber -p secure_area features
+```
+
+To run scenarios using tags:
+```
 cucumber -p secure_area -t @scenario_tag
 ```
 
 **Note:** Please note '@scenario_tag' is the tag defined on each scenario in the feature file
+
+# Reports
+
+**features.report.html** file contains test execution details and the status of the scenarios resulting in pass or fail, using Cucumber default reporting format. 
  
 # Technology Stack
  
  - Tool Used:             Cucumber
  - Language:              Ruby
  - Version Control:       GIT
- - Patterns:              Page-Object, PageFactory, Process Pattern
+ - Patterns:              Page-Object, PageFactory, Process, Assertion Patterns
  
-
