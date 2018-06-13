@@ -34,11 +34,11 @@ Actual Code implementation takes place in **step_definitions/** directory having
 
 **lib/pages** directory contains the page object desing pattern implementation with each page in the application defined as a separate page.
 
-**lib/panels** directory contains the reusable elements that can be used across different pages supporting Page-Object Design Pattern.
+**lib/panels** directory contains the reusable elements that can be used across different pages supporting page-object design pattern.
 
+Different environments like regression, smoke tests can be defined in **cucumber.yml** file as profiles 
 
-
-# Installation Instructions
+# Run Scenarios - Instructions
 
 To run the scenarios included in the feature files, there are two steps
 
@@ -49,4 +49,11 @@ cucumber -p secure_area -t @scenario_tag
 
 **Note:** Please note '@scenario_tag' is the tag defined on each scenario in the feature file
  
+# Technology Stack
  
+ - Tool Used:             Cucumber
+ - Language:              Ruby
+ - Version Control:       GIT
+ - Patterns:              Page-Object, PageFactory, Process Pattern
+ 
+
