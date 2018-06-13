@@ -1,8 +1,6 @@
-# Login Page
-class LoginPage
-  include PageObject
+# Secure Area Login Page
+class LoginPage < SecureAreaRootPage
   include FigNewton
-  include DataMagic
 
   page_url FigNewton.base_url
 
@@ -13,14 +11,16 @@ class LoginPage
   text_field(:password, id: 'password')
   button(:login, class: 'radius')
 
-  div(:flash_message, id: 'flash')
-
   def initialize_page
     has_expected_element_visible?
   end
 
-  def input_credentials(credentials)
+  def valid_credentials(credentials)
     populate_page_with data_for(credentials.to_sym)
   end
 
+  def invalid_credentials(username, password)
+    username_element.set username
+    password_element.set password
+  end
 end

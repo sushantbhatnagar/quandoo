@@ -1,32 +1,31 @@
+@login
 Feature: Login to Secure Area
 
   As a user
   I want to be able to login to the Secure Area Website successfully
-  So that I will be able to successfully use the website
+  So that I will be able to feel secure
 
   @login_success
-  Scenario: Verify I should be able to login to Secure Area Website
+  Scenario: Verify I should be able to login to Secure Area website with valid credentials
     Given I am on the Secure Area Login page
-    When I login with a valid credentials
-    Then I should be able to login successfully with below success message
+    When I input valid_user_credentials
+    And I login
+    Then I should see below success message
     """
     You logged into a secure area
     """
 
-  @login_failure @invalid_username
-  Scenario: Verify I should not be able to login to Secure Area Website with invalid UserName
+  @login_failure
+  Scenario Outline: Verify I should not be able to login to Secure Area website with invalid credentials
     Given I am on the Secure Area Login page
-    When I login with a invalid_username but valid password
-    Then I should get below message preventing me to login
-    """
-    Your username is invalid
-    """
-
-  @login_failure @invalid_password
-  Scenario: Verify I should not be able to login to Secure Area Website with invalid UserName
-    Given I am on the Secure Area Login page
-    When I login with a invalid password and valid username
-    Then I should get below message preventing me to login
-    """
-    Your password is invalid
-    """
+    When I input below "<username>" and "<password>"
+    And I login
+    Then I should see "<message>" preventing me to login
+  @invalid_username
+    Examples:
+      | username  | password             | message                  |
+      | WrongUser | SuperSecretPassword! | Your username is invalid |
+  @invalid_password
+    Examples:
+      | username | password  | message                  |
+      | tomsmith | WrongPass | Your password is invalid |

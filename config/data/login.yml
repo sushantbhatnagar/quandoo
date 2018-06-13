@@ -1,11 +1,3 @@
-valid:
+valid_user_credentials:
   username: 'tomsmith'
   password: 'SuperSecretPassword!'
-
-invalid_username:
-  username: 'tom'
-  password: 'SuperSecretPassword!'
-
-invalid_password:
-  username: 'tomsmith'
-  password: 'WrongPass'

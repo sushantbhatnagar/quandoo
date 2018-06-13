@@ -2,17 +2,22 @@ Given(/^I am on the Secure Area Login page$/) do
   visit(LoginPage)
 end
 
-When(/^I login with a ([^"]*) (username|password) and valid (username|password)$/) do |credential_type, username, password|
-  on(LoginPage) do |login_page|
-    login_page.input_credentials(credential_type)
-    login_page.login
-  end
+When(/^I input ([^"]*)$/) do |credential_type|
+  on(LoginPage).valid_credentials(credential_type.to_sym)
 end
 
-Then(/^I should be able to login successfully with below success message$/) do |text|
-  expect(on(SecureArea).flash_message_element.text).to include text
+And(/^I login$/) do
+  on(LoginPage).login
 end
 
-Then(/^I should get below message preventing me to login$/) do |text|
-  expect(on(LoginPage).flash_message_element.text).to include text
+Then(/^I should see below success message$/) do |message|
+  expect(on(SecureArea).flash_message_element.text).to include message
+end
+
+When(/^I input below "([^"]*)" and "([^"]*)"$/) do |username, password|
+  on(LoginPage).invalid_credentials(username, password)
+end
+
+Then(/^I should see "([^"]*)" preventing me to login$/) do |message|
+  expect(on(LoginPage).flash_message_element.text).to include message
 end
