@@ -20,6 +20,8 @@ gem install fig_newton
 
 ```gem fig_newton``` was designed to make it easier to manage different test environments. It is also common to have to change some of the values we use in our tests as we move from environment to environment. The **config/environments** directory is the default directory used by fig_newton.
 
+# Framework Folder Structure
+
 Cucumber is a tool that facilitates Behavior Driven Development framework. It acts as a living documentation wherein the scenarios can be written in Gherkin language, a plain text language which keeps Stakeholders, Developers and Testers on the same page in terms of the feature to be developed. 
 
 It focus on end user and the scenarios that are priority as per the business domain. The tests are easy to write, maintainable and reusable.
