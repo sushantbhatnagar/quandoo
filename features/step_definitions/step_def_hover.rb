@@ -3,20 +3,20 @@ Given(/^I am on the Secure Area Hover page$/) do
 end
 
 When(/^I hover over all avatars displayed on the page$/) do
-  @users = []
+  @all_users = []
   on(HoverPage) do |hover_page|
-    @avatar_array = hover_page.avatars_elements.map { |avatar| avatar }
-    @avatar_array.each do |avatar|
+    @all_avatars = hover_page.avatars_elements.map { |avatar| avatar }
+    @all_avatars.each do |avatar|
       avatar.hover
-       on(HoverPage).users_elements.map { |user| @users << user.text }
+       hover_page.users_elements.map { |user| @all_users << user.text }
     end
   end
-  @users.reject! { |e| e == '' }
+  @all_users.reject! { |e| e == '' }
 end
 
-Then(/^below users text should be displayed on hovering over its respective avatars$/) do |users_data|
-  data = users_data.raw
+Then(/^below users text should be displayed on hovering over its respective avatars$/) do |users_names|
+  data = users_names.raw
   users = []
-  @users.each { |x| users << x.split(': ')[1] }
+  @all_users.each { |each_user| users << each_user.split(': ')[1] }
   data.each { |user| expect(users).to include user.first }
 end
