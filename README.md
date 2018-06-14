@@ -23,7 +23,7 @@ Actual code implementation takes place in **step_definitions/** directory having
 
 Different environments like regression, preproduction or tests related to smoke, sanity can be defined in **cucumber.yml** file as profiles.
 
-**Gemfile** contains all the gems that are used within the project and is mentioned with the syntax as ```gem <gem_name>```
+**Gemfile** contains all the gems that are used within the project and is mentioned with the syntax as ```gem 'gem_name'```
 
 The **Gemfile.lock** file is where Bundler records the exact versions that were installed.
 
