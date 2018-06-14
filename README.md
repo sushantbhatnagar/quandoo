@@ -21,7 +21,12 @@ Actual code implementation takes place in **step_definitions/** directory having
 
 **lib/panels** directory contains the reusable elements that can be used across different pages supporting template-method pattern.
 
-Different environments like regression, preproduction or tests related to smoke, sanity can be defined in **cucumber.yml** file as profiles. 
+Different environments like regression, preproduction or tests related to smoke, sanity can be defined in **cucumber.yml** file as profiles.
+
+**Gemfile** contains all the gems that are used within the project and is mentioned with the syntax as ```gem <gem_name>```
+
+The **Gemfile.lock** file is where Bundler records the exact versions that were installed.
+
 
 # Framework - Installation Instructions
 
