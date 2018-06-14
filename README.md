@@ -66,6 +66,7 @@ cucumber -p secure_area -t @scenario_tag
 **Notes:** 
 1. Please note '@scenario_tag' is the tag defined on each scenario in the feature file.
 2. '-p' stands for profiles and is used to define the particular environment in which tests are executed. Check **cucumber.yml** file for more details.
+3. Implemented and verified with Chrome Browser at this moment. Will be updated for other browsers(Firefox, IE) in future updates. 
 
 # Reports - HTML Format
 
