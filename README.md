@@ -77,7 +77,7 @@ cucumber -p secure_area -t @scenario_tag
 
 **features.report.html** file contains test execution details and status of the scenarios resulting in pass or fail, using Cucumber default reporting format.
 
-To view the report, right-click on **features.report.html** file and hover on 'Open in Browser' option and choose the browser of your choice.
+To view the report, right-click on **features.report.html** file, hover on 'Open in Browser' option and choose the browser of your choice.
  
 **html_report** profile is created in cucumber.yml file to have the reports generated with each execution.
 
