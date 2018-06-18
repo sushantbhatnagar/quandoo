@@ -8,3 +8,5 @@ gem 'require_all'
 gem 'fig_newton'
 gem 'data_magic'
 gem 'pry'
+
+gem 'parallel_tests'
