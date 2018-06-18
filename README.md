@@ -97,7 +97,7 @@ Just use ```-p html_report``` with your cucumber command.
 
 - To run all features/scenarios in parallel, ```parallel_cucumber features```
 
-- [Read Here!](https://github.com/grosser/parallel_tests) for more details on parallel_tests.
+- [Read Here!](https://github.com/grosser/parallel_tests) for more details on parallel_tests gem.
 
 - To run with specific tag(s) command that can be used is ```parallel_cucumber features/ -o '-t  @regression -t ~@manual'```
 
@@ -106,3 +106,6 @@ Just use ```-p html_report``` with your cucumber command.
 
 - Rerun Failed scenarios using command:
 ```cucumber @cucumber_failures.log --format html --out test_results_rerun.html ENVIRONMENT=%environment%```
+
+
+
