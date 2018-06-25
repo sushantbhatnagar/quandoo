@@ -1,5 +1,7 @@
 Before do
-  @browser = Watir::Browser.new :chrome
+  caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"args" => [ "--disable-infobars" ]})
+  driver = Selenium::WebDriver.for :remote, url: 'http://localhost:4444/wd/hub', desired_capabilities: caps
+  @browser = Watir::Browser.new driver
 end
 
 # After do |scenario|
