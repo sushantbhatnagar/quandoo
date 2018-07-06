@@ -10,4 +10,6 @@ require_all 'lib'
 
 require 'pry'
 
+binding.pry
+
 World(PageObject::PageFactory)
