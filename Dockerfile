@@ -1,22 +1,30 @@
-# Base Image
-FROM drecom/centos-ruby:2.3.3
+# Base image with selenium and firefox
+FROM selenium/standalone-firefox
 
-# Changing User to root
+# Change the User to Root
 USER root
 
-# XVFB and Chrome driver
-RUN yum -y install xorg-x10-server-Xvfb unzip wget
-RUN wget https://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip
-RUN unzip chromedriver_linux64.zip && mv chromedriver /usr/bin
-RUN yum -y install Xvfb
+# Install Ruby version 2.3.3
+RUN \
+  apt-get update && apt-get install -y --no-install-recommends --no-install-suggests curl bzip2 build-essential libssl-dev libreadline-dev zlib1g-dev && \
+  rm -rf /var/lib/apt/lists/* && \
+  curl -L https://github.com/sstephenson/ruby-build/archive/v20180329.tar.gz | tar -zxvf - -C /tmp/ && \
+  cd /tmp/ruby-build-* && ./install.sh && cd / && \
+  ruby-build -v 2.3.3 /usr/local && rm -rfv /tmp/ruby-build-* && \
+  gem install bundler --no-rdoc --no-ri
 
-# Chrome Browser
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-RUN yum -y install google-chrome-stable_current_x86_64.rpm
-RUN yum -y install which
 
-# Copy code to the newly created directory
+# Install Gecko Driver for Firefox Browser
+RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.21.0/geckodriver-v0.21.0-linux64.tar.gz \
+  && tar -xvzf geckodriver* \
+  && chmod +x geckodriver \
+  && mv geckodriver /usr/local/bin/ \
+  && rm geckodriver-v0.21.0-linux64.tar.gz
+
+# Create a new directory
 RUN mkdir usr/src/app
+
+# Copy Source Code to the newly created directory
 COPY . usr/src/app
 
 # Change the working directory
@@ -26,9 +34,8 @@ WORKDIR usr/src/app
 RUN gem install cucumber --no-ri --no-rdoc \
 	&& gem install watir-webdriver --no-ri --no-rdoc \
 	&& gem install selenium-webdriver --no-ri --no-rdoc \
-	&& gem install bundler \
 	&& bundle install
 
-# Mount \dev\shm and set the XVFB Display
-# RUN Xvfb :1 -screen 0 1600x1200x16 &
-# RUN export DISPLAY=:1.0
+
+# Start container by below command
+# docker container run -d --name custom_name -v /dev/shm:/dev/shm --privileged image_name
