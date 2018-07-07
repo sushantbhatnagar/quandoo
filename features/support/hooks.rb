@@ -6,6 +6,7 @@ Before do
   		@browser = Watir::Browser.new :chrome
   	else
   		@browser = Watir::Browser.new :ie
+  	end  	
 end
 
 # After do |scenario|
