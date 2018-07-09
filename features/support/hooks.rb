@@ -10,7 +10,6 @@ Before do
 end
 
 After do |scenario|
-  require 'pry' ; binding.pry
   if scenario.failed?
     time = Time.now.strftime("%Y-%m-%d_%H-%M-%S")
     filename = "error-#{@current_page.class}-#{time}.png"
