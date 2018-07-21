@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  chrome-wd-ruby:
+    cap_add:
+      - ALL
+    build:
+      context: .
+      dockerfile: Dockerfile.chrome 
+      # shm_size: '2gb'
+    image: chrome-ruby-chromedriver    
+    container_name: my-ruby-chrome-driver
+    privileged: true
+  quandoo-psql-db:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: mypassword
+
+
