@@ -1,7 +1,7 @@
 
 # Secure Area Website
 
-This website can be used by users to login to secure area, check their details by hovering over different avatars and validate details of their emails, website and actions available in their respective data tables.
+This website can be used by users to login to secure area, check their details by hovering over different avatars and validate details of their emails, website and actions available in their respective data tables!
 
 # Framework - Folder Structure
 
