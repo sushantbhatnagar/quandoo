@@ -1,4 +1,4 @@
-# Hover Page
+# Hover over Avatars
 class HoverPage < SecureAreaRootPage
   include FigNewton
 
