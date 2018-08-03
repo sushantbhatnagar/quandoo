@@ -5,7 +5,7 @@ This website can be used by users to login to secure area, check their details b
 
 # Framework - Folder Structure
 
-Cucumber is a tool that facilitates Behavior Driven Development framework. It acts as a living documentation wherein the scenarios can be written in Gherkin language, a plain text language which keeps Stakeholders, Developers and Testers on the same page in terms of the feature to be developed. 
+Cucumber is a tool that facilitates Behavior Driven Development(BDD) framework. It acts as a living documentation wherein the scenarios can be written in Gherkin language, a plain text language which keeps Stakeholders, Developers and Testers on the same page in terms of the feature to be developed. 
 
 It focuses on end-user and the scenarios that are priority as per the business domain. The tests are easy to write, maintainable and reusable.
 
