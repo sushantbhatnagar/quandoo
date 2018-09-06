@@ -1,0 +1,44 @@
+# Base image with selenium and chrome
+FROM selenium/standalone-chrome
+
+# Change the User to Root
+USER root
+
+# Install Ruby version 2.3.3
+RUN \
+  apt-get update && apt-get install -y --no-install-recommends --no-install-suggests curl bzip2 build-essential libssl-dev libreadline-dev zlib1g-dev && \
+  rm -rf /var/lib/apt/lists/* && \
+  curl -L https://github.com/sstephenson/ruby-build/archive/v20180329.tar.gz | tar -zxvf - -C /tmp/ && \
+  cd /tmp/ruby-build-* && ./install.sh && cd / && \
+  ruby-build -v 2.3.3 /usr/local && rm -rfv /tmp/ruby-build-* && \
+  gem install bundler --no-rdoc --no-ri
+
+
+# Install Chrome Driver for Chrome Browser
+RUN apt-get install unzip
+
+RUN wget https://chromedriver.storage.googleapis.com/2.39/chromedriver_linux64.zip \
+    && unzip chromedriver_linux64.zip \
+    && chmod +x chromedriver \
+    && mv chromedriver /usr/bin/ \
+    && rm chromedriver_linux64.zip
+
+# Create a new directory
+RUN mkdir usr/src/app
+
+# Copy Source Code to the newly created directory
+COPY . usr/src/app
+
+# Change the working directory
+WORKDIR usr/src/app
+
+# Installing missing gems and dependencies
+RUN gem install cucumber --no-ri --no-rdoc \
+	&& gem install watir-webdriver --no-ri --no-rdoc \
+	&& gem install selenium-webdriver --no-ri --no-rdoc \
+	&& bundle install
+
+
+# Start container by below command
+# docker container run -d --name custom_name -v /dev/shm:/dev/shm --privileged image_name
+# docker container run -d --name custom_name --shm-size=2g --privileged image_name

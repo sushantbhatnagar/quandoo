@@ -8,6 +8,4 @@ require 'fig_newton'
 require 'require_all'
 require_all 'lib'
 
-require 'pry'
-
 World(PageObject::PageFactory)
