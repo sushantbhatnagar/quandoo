@@ -15,5 +15,11 @@ services:
     image: postgres:latest
     environment:
       POSTGRES_PASSWORD: mypassword
+    volumes:
+      - test-results:/var/lib/postgresql/data
+
+volumes:
+  test-results:    
+
 
 
