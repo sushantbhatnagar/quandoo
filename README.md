@@ -1,13 +1,13 @@
 
 # Secure Area Website
 
-This website can be used by users to login to secure area, check their details by hovering over different avatars and validate details of their emails, website and actions available in their respective data tables.
+This website can be used by users to login to secure area, check their details by hovering over different avatars and validate details of their emails, website and actions available in their respective data tables!
 
 # Framework - Folder Structure
 
-Cucumber is a tool that facilitates Behavior Driven Development framework. It acts as a living documentation wherein the scenarios can be written in Gherkin language, a plain text language which keeps Stakeholders, Developers and Testers on the same page in terms of the feature to be developed. 
+Cucumber is a tool that facilitates Behavior Driven Development(BDD) framework. It acts as a living documentation wherein the scenarios can be written in Gherkin language, a plain text language which keeps Stakeholders, Developers and Testers on the same page in terms of the feature to be developed. 
 
-It focuses on end-user and the scenarios that are priority as per the business domain. The tests are easy to write, maintainable and reusable.
+It focuses on end-user and the scenarios that are priority as per the business domain. The tests are easy to write, maintainable, robust and reusable.
 
 Cucumber execution starts from **support/env.rb** file loading the required gems and adding PageObject to the World object that Cucumber creates.
 
