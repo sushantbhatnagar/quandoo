@@ -1,6 +1,8 @@
 default: --no-source --color --format pretty
-#html_report: --format progress --format html --out=features.report.html
-secure_area: FIG_NEWTON_FILE=secure_area.yml DATA_MAGIC_FILE=login.yml --profile default #--profile html_report
+html_report: --format progress --format html --out=features.report.html
+
+secure_area: FIG_NEWTON_FILE=secure_area.yml DATA_MAGIC_FILE=login.yml #--profile default --profile html_report
+secure_area_zalenium: -p secure_area ZALENIUM=true
 
 # This profile automatically gets picked up on running 'parallel_tests' command!
 parallel: -p secure_area

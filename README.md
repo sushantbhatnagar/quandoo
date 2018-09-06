@@ -107,5 +107,10 @@ Just use ```-p html_report``` with your cucumber command.
 - Rerun Failed scenarios using command:
 ```cucumber @cucumber_failures.log --format html --out test_results_rerun.html ENVIRONMENT=%environment%```
 
+# Zalenium
 
+- Quick Start links are as follows:
+
+    [Zalenium Set Up](http://www.testautomationguru.com/selenium-webdriver-disposable-selenium-grid-infrastructure-setup-using-zalenium/)    
+    [Zalenium Configuration Lists](https://opensource.zalando.com/zalenium/)
 
