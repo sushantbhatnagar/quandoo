@@ -5,12 +5,12 @@ Before do
     @browser = Watir::Browser.new driver
   else
     case ENV['BROWSER']
-      when 'firefox'
-        @browser = Watir::Browser.new :firefox
-      when 'chrome'
-        @browser = Watir::Browser.new :chrome
-      else
-        @browser = Watir::Browser.new :ie
+    when 'firefox'
+      @browser = Watir::Browser.new :firefox
+    when 'chrome'
+      @browser = Watir::Browser.new :chrome
+    else
+      @browser = Watir::Browser.new :ie
     end
   end
 end

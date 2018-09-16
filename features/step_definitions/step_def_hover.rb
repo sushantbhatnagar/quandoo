@@ -8,7 +8,7 @@ When(/^I hover over all avatars displayed on the page$/) do
     @all_avatars = hover_page.avatars_elements.map { |avatar| avatar }
     @all_avatars.each do |avatar|
       avatar.hover
-       hover_page.users_elements.map { |user| @all_users << user.text }
+      hover_page.users_elements.map { |user| @all_users << user.text }
     end
   end
   @all_users.reject! { |e| e == '' }
