@@ -1,4 +1,7 @@
 node {
+   stage('Preparation') {
+     checkout scm
+   }
    stage('Test') {
      bat 'cucumber -p secure_area features BROWSER=chrome'
    }
