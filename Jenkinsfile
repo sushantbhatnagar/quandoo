@@ -7,7 +7,7 @@ node {
    }
    stage('Docker build/push') {
      docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
-     def app = docker.build("sushantbhatnagar/dockerized_quandoo:latest", '--file Dockerfile.chrome .').push()
+     def app = docker.build("sushantbhatnagar/dockerized_quandoo:latest", '--file Dockerfile_chrome .').push()
      }
    }
 }
