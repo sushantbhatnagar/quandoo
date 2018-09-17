@@ -6,7 +6,7 @@ services:
       - ALL
     build:
       context: .
-      dockerfile: Dockerfile.chrome 
+      dockerfile: Dockerfile_chrome
       # shm_size: '2gb'
     image: chrome-ruby-chromedriver    
     container_name: my-ruby-chrome-driver
