@@ -20,12 +20,14 @@ node {
      bat 'cucumber -p secure_area features BROWSER=chrome'
    }
    stage('Docker build/push') {
-     docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
-     def dockerfile = 'Dockerfile_chrome'
-     def app = docker.build("sushantbhatnagar/dockerized_quandoo", "-f ${dockerfile}")
-     app.push('latest')
-     }
-   }
+     withEnv(["PATH=C:/cygwin64/bin:$PATH"]) {
+         docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
+         def dockerfile = 'Dockerfile_chrome'
+         def app = docker.build("sushantbhatnagar/dockerized_quandoo", "-f ${dockerfile}")
+         app.push('latest')
+        }
+      }
+    }
   }
   catch(e) {
     // mark build as failed
