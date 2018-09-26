@@ -20,8 +20,8 @@ node {
      bat 'cucumber -p secure_area features BROWSER=chrome'
    }
    stage('Docker build/push') {
-     // withEnv(["PATH=C:/cygwin64/bin:$PATH"]) {
-     withEnv(["PATH+cygwin=C:/cygwin64/bin"]) {
+     // withEnv(["PATH=C:/cygwin/bin:$PATH"]) {
+     withEnv(["PATH+cygwin=C:/cygwin/bin"]) {
          docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
          def dockerfile = 'Dockerfile_chrome'
          def app = docker.build("sushantbhatnagar/dockerized_quandoo", "-f ${dockerfile}")
