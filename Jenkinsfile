@@ -1,8 +1,13 @@
 node {
   // configuration
   def to = emailextrecipients([
+          // send email to all folks who have committed the code since the last successful build.
           [$class: 'CulpritsRecipientProvider'],
+
+          // send email to the developer who has checked in the code for the last build
           [$class: 'DevelopersRecipientProvider'],
+
+          // send email to the person who has triggered the build (manually)
           [$class: 'RequesterRecipientProvider']
   ])
 
@@ -36,6 +41,7 @@ node {
          replyTo: '$DEFAULT_REPLYTO', subject: subject,
          to: to, attachLog: true )
     }
+    echo 'Email notification sent'
 
     // mark current build as a failure and throw the error
     throw e;
