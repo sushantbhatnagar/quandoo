@@ -13,11 +13,13 @@ node{
          }
     }
     stage('Container Tests') {
-        def myTestContainer = docker.image('sushantbhatnagar/dockerized_quandoo:test_0.1')
-        myTestContainer.pull()
-        myTestContainer.inside {
-            sh  'cucumber -p secure_area -t @login'
-            echo 'Tests Completed!!'
+        withEnv(["PATH+cygwin=C:/cygwin/bin:$PATH"]){
+            def myTestContainer = docker.image('sushantbhatnagar/dockerized_quandoo:test_0.1')
+            myTestContainer.pull()
+            myTestContainer.inside {
+                sh  'cucumber -p secure_area -t @login'
+                echo 'Tests Completed!!'
+            }
         }
     }
 }
