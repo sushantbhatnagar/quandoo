@@ -19,19 +19,26 @@ node {
      // scm - instructs checkout to checkout the code from specific revision that triggered the pipeline
      checkout scm
    }
-   stage('Test') {
+   //stage('Test') {
      // run tests after Build is a success
-     bat 'cucumber -p secure_area features BROWSER=chrome'
-   }
+     //bat 'cucumber -p secure_area features BROWSER=chrome'
+   //}
    stage('Docker build/push') {
      // withEnv(["PATH=C:/cygwin/bin:$PATH"]) {
      withEnv(["PATH+cygwin=C:/cygwin/bin"]) {
        docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
        def dockerfile = 'Dockerfile_chrome'
        def app = docker.build("sushantbhatnagar/dockerized_quandoo", "-f ${dockerfile} .")
-       app.push('latest')
+       app.push('test_0.1')
         }
       }
+    }
+  }
+  stage('Container Tests') {
+    def myTestContainer = docker.image('sushantbhatnagar/dockerized_quandoo:test_0.1')
+    myTestContainer.pull()
+    myTestContainer.inside {
+        sh 'cucumber -p secure_area features BROWSER=chrome'
     }
   }
   catch(e) {
