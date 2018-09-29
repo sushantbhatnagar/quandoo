@@ -1,3 +1,4 @@
+// Scripted Pipeline syntax
 node {
   // configuration
   def to = emailextrecipients([
@@ -14,9 +15,12 @@ node {
   //job
   try {
    stage('Preparation') {
+     // checkout - checks out the code from source control
+     // scm - instructs checkout to checkout the code from specific revision that triggered the pipeline
      checkout scm
    }
    stage('Test') {
+     // run tests after Build is a success
      bat 'cucumber -p secure_area features BROWSER=chrome'
    }
    stage('Docker build/push') {
