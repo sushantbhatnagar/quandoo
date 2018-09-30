@@ -2,7 +2,6 @@ node{
     stage('Preparation') {
         checkout scm
     }
-
     stage('Docker build/push') {
          withEnv(["PATH+cygwin=C:/cygwin/bin:$PATH"]){
             docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
@@ -15,9 +14,12 @@ node{
     stage('Container Tests') {
         withEnv(["PATH+cygwin=C:/cygwin/bin:$PATH"]){
             def myTestContainer = docker.image('sushantbhatnagar/dockerized_quandoo:test_0.1')
-            myTestContainer.pull()
-            myTestContainer.inside {
-                sh  'cucumber -p secure_area -t @login'
+            // myTestContainer.pull()
+            // When the Pipeline executes, Jenkins will automatically start the specified container
+            // and execute the defined steps within it
+            myTestContainer.inside('-d -v /dev/shm:/dev/shm --privileged'){
+                sh 'cd secure_area'
+                sh 'cucumber -p secure_area -t @login'
                 echo 'Tests Completed!!'
             }
         }
