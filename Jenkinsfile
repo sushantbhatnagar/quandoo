@@ -18,12 +18,12 @@ node{
             echo 'Image is pulled'
 
             // When the Pipeline executes, Jenkins will automatically start the specified container and execute the defined steps within it
-            myTestContainer.inside(){
-                echo 'inside container'
-                withEnv(["PATH+cygwin=C:/cygwin/bin:$PATH"]) {
-                ls
-                sh 'cucumber -p secure_area -t @login BROWSER=chrome'
-                echo 'Tests Completed!!'
+            withEnv(["PATH+cygwin=C:/cygwin/bin:$PATH"]) {
+                myTestContainer.inside(){
+                    echo 'inside container'
+                    ls
+                    sh 'cucumber -p secure_area -t @login BROWSER=chrome'
+                    echo 'Tests Completed!!'
                }
             }
         }
