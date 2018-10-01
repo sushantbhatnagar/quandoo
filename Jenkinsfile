@@ -18,8 +18,10 @@ node{
             // When the Pipeline executes, Jenkins will automatically start the specified container
             // and execute the defined steps within it
             myTestContainer.inside('-d -v /dev/shm:/dev/shm --privileged'){
+                withEnv(["PATH+cygwin=C:/cygwin/bin:$PATH"]) {
                 'cucumber -p secure_area -t @login BROWSER=chrome'
                 echo 'Tests Completed!!'
+               }
             }
         }
     }
