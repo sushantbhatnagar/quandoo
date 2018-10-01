@@ -18,8 +18,7 @@ node{
             // When the Pipeline executes, Jenkins will automatically start the specified container
             // and execute the defined steps within it
             myTestContainer.inside('-d -v /dev/shm:/dev/shm --privileged'){
-                sh 'cd secure_area'
-                sh 'cucumber -p secure_area -t @login'
+                'cucumber -p secure_area -t @login BROWSER=chrome'
                 echo 'Tests Completed!!'
             }
         }
