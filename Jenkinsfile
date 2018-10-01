@@ -17,13 +17,13 @@ node{
             def myTestContainer = docker.image('sushantbhatnagar/dockerized_quandoo:test_0.1')
             myTestContainer.pull()
             echo 'Image is pulled'
-            echo "$(PATH)"
+            echo $PATH
 
             // When the Pipeline executes, Jenkins will automatically start the specified container and execute the defined steps within it
             withEnv(["PATH+cygwin=C:/cygwin/bin:$PATH"]) {
-                echo "$(PATH)"
+                echo $PATH
                 myTestContainer.inside(){
-                echo "$(PATH)"
+                echo $PATH
                     echo 'inside container'
                     ls
                     sh 'cucumber -p secure_area -t @login BROWSER=chrome'
