@@ -12,20 +12,14 @@ node{
          //}
     //}
     stage('Container Tests') {
-        withEnv(["PATH+docker=C:/Program Files/Docker/Docker/resources/bin:$PATH"]){
-        withEnv(["PATH+cygwin=C:/cygwin/bin:$PATH"]){
             def myTestContainer = docker.image('sushantbhatnagar/dockerized_quandoo:test_0.1')
             myTestContainer.pull()
             // When the Pipeline executes, Jenkins will automatically start the specified container and execute the defined steps within it
-            withEnv(["PATH+docker=C:/Program Files/Docker/Docker/resources/bin:$PATH"]){
-                myTestContainer.inside(){
-                    echo 'inside container'
-                    ls
-                    sh 'cucumber -p secure_area -t @login BROWSER=chrome'
-                    echo 'Tests Completed!!'
-                  }
-               }
-            }
+            myTestContainer.inside(){
+               echo 'inside container'
+               ls
+               sh 'cucumber -p secure_area -t @login BROWSER=chrome'
+               echo 'Tests Completed!!'
+             }
         }
     }
-}
