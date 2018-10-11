@@ -15,7 +15,7 @@ node{
             withEnv(["PATH+cygwin=C:/cygwin/bin:$PATH"]){
             def myTestContainer = docker.image('sushantbhatnagar/dockerized_quandoo:test_0.1')
             myTestContainer.pull()
-            ls
+            //ls
             // When the Pipeline executes, Jenkins will automatically start the specified container and execute the defined steps within it
             myTestContainer.inside{
                echo 'inside container'
