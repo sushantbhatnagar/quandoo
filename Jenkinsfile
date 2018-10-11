@@ -1,4 +1,4 @@
-node{
+node('docker'){
     stage('Preparation') {
         checkout scm
     }
