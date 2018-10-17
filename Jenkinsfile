@@ -14,8 +14,8 @@ node(){
     stage('Container Tests') {
             withEnv(["PATH+cygwin=C:/cygwin/bin:$PATH"]){
                 def myTestContainer = docker.image('sushantbhatnagar/dockerized_quandoo:test_0.1')
-                // myTestContainer.pull()
-                myTestContainer.inside("-v /dev/shm:/dev/shm' --privileged --name test") {
+                myTestContainer.pull()
+                myTestContainer.inside() {
                 // withDockerContainer('myTestContainer') {
                     echo 'inside container'
                     sh 'cucumber -p secure_area -t @login BROWSER=chrome'
