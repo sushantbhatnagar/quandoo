@@ -13,15 +13,14 @@ node(){
     //}
     stage('Container Tests') {
             withEnv(["PATH+cygwin=C:/cygwin/bin:$PATH"]){
-            docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
                 def myTestContainer = docker.image('sushantbhatnagar/dockerized_quandoo:test_0.1')
                 myTestContainer.pull()
-                // myTestContainer.run("-v /dev/shm:/dev/shm --privileged --name test") {
-                withDockerContainer('myTestContainer') {
+                myTestContainer.run("-v /dev/shm:/dev/shm --privileged --name test") {
+                // withDockerContainer('myTestContainer') {
                     echo 'inside container'
                     sh 'cucumber -p secure_area -t @login BROWSER=chrome'
                     echo 'Tests Completed!!'
-               }
+                }
             }
          }
       }
